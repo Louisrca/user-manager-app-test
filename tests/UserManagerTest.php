@@ -32,7 +32,7 @@ class UserManagerTest extends TestCase
 
     public function testAddUser(): void
     {
-        $this->dbMock->expects(invocationRule: $this->once())
+        $this->dbMock->expects($this->once())
             ->method('prepare')
             ->with("INSERT INTO users (name, email) VALUES (:name, :email)")
             ->willReturn($this->stmtMock);
