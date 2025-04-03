@@ -61,18 +61,16 @@ const lastNames = [
 ];
 
 export default function () {
-  // Générer un prénom et un nom de famille aléatoires
   const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
   const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
 
-  // Utiliser le même nom pour l'email et le nom complet
   const email = `${firstName}.${Math.floor(
     Math.random() * 1000000
   )}@example.com`;
 
   let formData = {
-    name: `${firstName} ${lastName}`, // Nom complet
-    email: email, // Email cohérent avec le prénom
+    name: `${firstName} ${lastName}`,
+    email: email,
   };
 
   let params = {
@@ -83,15 +81,12 @@ export default function () {
 
   let res = http.post(API_URL, formData, params);
 
-  // Afficher le statut et la réponse pour le débogage
   console.log(`Status: ${res.status}, Response: ${res.body}`);
 
   check(res, { "Statut 200": (r) => r.status === 200 });
 
-  // Récupérer les utilisateurs
   res = http.get(API_URL);
   check(res, { "Liste non vide": (r) => r.json().length > 0 });
 
-  // Pause avant la prochaine itération
   sleep(1);
 }
