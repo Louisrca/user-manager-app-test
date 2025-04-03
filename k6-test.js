@@ -2,8 +2,8 @@ import http from "k6/http";
 import { check, sleep } from "k6";
 
 export const options = {
-  vus: 10, // Nombre d'utilisateurs virtuels
-  duration: "30s", // Durée du test
+  vus: 10,
+  duration: "30s",
 };
 
 const API_URL = "http://0.0.0.0:8000/src/api.php";
