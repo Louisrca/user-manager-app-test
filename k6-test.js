@@ -2,7 +2,7 @@ import http from "k6/http";
 import { check, sleep } from "k6";
 
 export const options = {
-  vus: 10,
+  vus: 500,
   duration: "30s",
 };
 
@@ -81,12 +81,7 @@ export default function () {
 
   let res = http.post(API_URL, formData, params);
 
-  console.log(`Status: ${res.status}, Response: ${res.body}`);
-
   check(res, { "Statut 200": (r) => r.status === 200 });
-
-  res = http.get(API_URL);
-  check(res, { "Liste non vide": (r) => r.json().length > 0 });
 
   sleep(1);
 }

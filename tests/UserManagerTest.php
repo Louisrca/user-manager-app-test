@@ -34,7 +34,7 @@ class UserManagerTest extends TestCase
     {
         $this->dbMock->expects($this->once())
             ->method('prepare')
-            ->with("INSERT INTO users (name, email) VALUES (:name, :email)")
+            ->with("INSERT INTO users (name, email, created_at) VALUES (:name, :email, NOW())")
             ->willReturn($this->stmtMock);
 
         $this->stmtMock->expects($this->once())

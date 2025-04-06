@@ -27,7 +27,7 @@ class UserManager
             throw new InvalidArgumentException("Email invalide.");
         }
 
-        $stmt = $this->db->prepare("INSERT INTO users (name, email) VALUES (:name, :email)");
+        $stmt = $this->db->prepare("INSERT INTO users (name, email, created_at) VALUES (:name, :email, NOW())");
         $stmt->execute(['name' => $name, 'email' => $email]);
     }
 

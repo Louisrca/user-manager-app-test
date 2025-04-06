@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         userList.innerHTML = "";
         users.forEach((user) => {
           const li = document.createElement("li");
-          li.innerHTML = `${user.name} (${user.email})
+          li.innerHTML = `${user.name} (${user.email}) ${user.created_at}
                         <button onclick="editUser(${user.id}, '${user.name}', '${user.email}')">✏️</button>
                         <button onclick="deleteUser(${user.id})">❌</button>`;
           userList.appendChild(li);
